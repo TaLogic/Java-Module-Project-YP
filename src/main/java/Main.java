@@ -15,15 +15,24 @@ public class Main {
         int speed;
         String name;
         for (int i = 0; i < cars.length; i++) {
-            System.out.println("\nВведите название " + (i + 1) + "-го автомобиля: ");
-            name = scanner.nextLine();
             while (true) {
-                System.out.println("Введите скорость " + (i + 1) + "-го автомобиля: ");
+                System.out.print("\nВведите название " + (i + 1) + "-го автомобиля: ");
+                name = scanner.nextLine();
+                name = name.trim();
+                if (!name.isEmpty()) {
+                    break;
+                }
+                System.out.print("Вы не ввели название автомобиля. Попробуйте еще раз.");
+            }
+            while (true) {
+                System.out.print("Введите скорость " + (i + 1) + "-го автомобиля: ");
                 if (scanner.hasNextInt()) {
                     speed = scanner.nextInt();
                     if (speed > 0 && speed <= 250) {
                         scanner.nextLine();
                         break;
+                    } else {
+                        System.out.print("Скорость автомобиля должна быть в диапозоне (0; 250]. ");
                     }
                     scanner.nextLine();
                 } else {
